@@ -1,0 +1,46 @@
+
+add_library(
+    ${PROJECT_NAME}_ui
+    MainWindow.cpp
+    MainWindow.h
+    MainWindow.ui
+    NodeTreeModel.cpp
+    NodeTreeModel.h
+    ShaderWindow.cpp
+    ShaderWindow.h
+    ShaderWindow.ui
+    StateSetView.cpp
+    StateSetView.h
+    StateSetView.ui
+    TextureListModel.cpp
+    TextureListModel.h
+    TestOutLine.cpp
+    TestOutLine.h
+    Visitor.cpp
+    Visitor.h
+    GUIEventHandler.cpp
+    GUIEventHandler.h
+    TestLine.cpp
+    TestLine.h
+    TestCull.cpp
+    TestCull.h
+    TestBulletLine.cpp
+    TestBulletLine.h
+    TestStencil.cpp
+    TestStencil.h
+    OsgDataEdit.cpp
+    OsgDataEdit.h
+    NodeView.cpp
+    NodeView.h
+    CoordinateGeode.cpp
+    CoordinateGeode.h
+    SetUnRefImageDataAfterApplyVisitor.cpp
+    SetUnRefImageDataAfterApplyVisitor.h
+)
+
+target_link_libraries(
+    ${PROJECT_NAME}_ui
+    ${QT_ALL_LIBRARIES}
+    ${OPENSCENEGRAPH_LIBRARIES}
+    osgCDH
+)
