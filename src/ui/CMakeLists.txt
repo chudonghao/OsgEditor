@@ -1,0 +1,30 @@
+
+add_library(
+  ${PROJECT_NAME}_ui
+  MainWindow.cpp
+  MainWindow.h
+  MainWindow.ui
+  CoordinateGeode.cpp
+  CoordinateGeode.h
+  GUIEventHandler.cpp
+  GUIEventHandler.h
+  NodeTreeModel.cpp
+  NodeTreeModel.h
+  NodeView.cpp
+  NodeView.h
+  NodeView.ui
+  StateSetView.cpp
+  StateSetView.h
+  StateSetView.ui
+  TextureListModel.cpp
+  TextureListModel.h
+  OsgDataEdit.cpp
+  OsgDataEdit.h
+)
+
+target_link_libraries(
+  ${PROJECT_NAME}_ui
+  ${PROJECT_NAME}_scene
+  Qt5::Widgets
+  osg::osg
+)
