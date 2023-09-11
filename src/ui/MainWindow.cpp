@@ -33,8 +33,8 @@
 
 #include "CoordinateGeode.h"
 #include "GUIEventHandler.h"
+#include "NodeDetailModel.h"
 #include "NodeTreeModel.h"
-#include "NodeView.h"
 #include "SetUnRefImageDataAfterApplyVisitor.h"
 #include "StateSetView.h"
 #include "ui_MainWindow.h"
@@ -161,12 +161,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui) {
   QSurfaceFormat::setDefaultFormat(sf);
   ui->setupUi(this);
   _node_tree_model = new NodeTreeModel(this);
+  _node_detail_model = new NodeDetailModel(this);
   ui->node_tree_view->setModel(_node_tree_model);
   ui->node_tree_view->setContextMenuPolicy(Qt::CustomContextMenu);
   ui->node_tree_view->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);
   ui->node_tree_view->setDragEnabled(true);
   ui->node_tree_view->setAcceptDrops(true);
   ui->node_tree_view->setDropIndicatorShown(true);
+  ui->node_detail_view->setModel(_node_detail_model);
   setAcceptDrops(true);
 
   _gl_widget = new osgQOpenGLWidget(this);
@@ -435,7 +437,9 @@ bool MainWindow::LoadImageFile(const char *file) {
 void MainWindow::on_coord_check_box_stateChanged(int enabled) { _coord_group->setNodeMask(enabled ? ~0u : 0u); }
 
 void MainWindow::ShowNodeDetail(osg::Node *node) {
-  ui->node_view->SetNode(node);
+  _node_detail_model->SetNode(node);
+  ui->node_detail_view->expandAll();
+
   ShowStateSetDetail(node ? node->getStateSet() : nullptr);
 
   auto index = _node_tree_model->CheckNode(node);

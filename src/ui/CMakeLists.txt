@@ -10,9 +10,8 @@ add_library(
   GUIEventHandler.h
   NodeTreeModel.cpp
   NodeTreeModel.h
-  NodeView.cpp
-  NodeView.h
-  NodeView.ui
+  NodeDetailModel.cpp
+  NodeDetailModel.h
   StateSetView.cpp
   StateSetView.h
   StateSetView.ui

@@ -34,6 +34,7 @@ class MainWindow;
 }
 
 class NodeTreeModel;
+class NodeDetailModel;
 
 namespace MainWindowDetail {
 class OutlineCullCallback;
@@ -83,6 +84,7 @@ class MainWindow : public QMainWindow {
   osg::ref_ptr<MainWindowDetail::OutlineCullCallback> _outline_cull_callback;
   QTimer _frame_timer;
   NodeTreeModel *_node_tree_model;
+  NodeDetailModel *_node_detail_model;
   QString _last_file_dir{"."};
   void SetupViewer();
   bool OpenFile(const char *file);
